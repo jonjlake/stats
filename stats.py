@@ -59,9 +59,11 @@ def find_max(val1, val2):
 def find_rolling_values(x_array, y_array, process_interval, process_function):
 	minlen = find_min(len(x_array), len(y_array))
 
-	result_array = []
+	# Start with first value of 0 for correlation compatibility
+	result_array = [0]
 
-	for i in range(0, minlen):
+	# Start with two-index array for correlation compatibility
+	for i in range(1, minlen):
 		istart = find_max(0, i - process_interval + 1)
 		result_array.append(process_function(x_array[istart:i+1:1], y_array[istart:i+1:1]))
 
